@@ -1,5 +1,24 @@
 <html>
-   <body>
-      <image src="images/pyramid.png" />
-   </body>
+    <head><meta charset="utf-8"></head>
+    <link href="style.css" rel="stylesheet" type="text/css"></link>
+    <body>
+        <div id="grid" height="3000px">
+         <a href="https://dionisio-fernandez.github.io/main/images/cuboid.png"/>               <image id="1" width="100%" src="images/cuboid.png"     >  </a>
+         <a href="https://dionisio-fernandez.github.io/main/images/pyramid.png"/>              <image id="2" width="100%" src="images/pyramid.png"    >  </a>
+         <a href="https://dionisio-fernandez.github.io/main/images/cube.png"/>                 <image id="3" width="100%" src="images/cube.png"       >  </a>
+
+         <a href="https://dionisio-fernandez.github.io/main/images/opening.png"/>              <image id="4" width="100%" src="images/opening.png"    >  </a>
+         <a href="https://dionisio-fernandez.github.io/main/images/raspberry.png"/>            <image id="5" width="100%" src="images/raspberry.png"  >  </a>
+         <a href="https://dionisio-fernandez.github.io/main/images/gateway.png"/>              <image id="6" width="100%" src="images/gateway.png"    >  </a>
+         <a href="https://dionisio-fernandez.github.io/main/images/socket.png"/>               <image id="7" width="100%" src="images/socket.png"     >  </a>
+         <a href="https://dionisio-fernandez.github.io/main/images/lock.png"/>                 <image id="8" width="100%" src="images/lock.png"       >  </a>
+        </div>
+    </body>
+    <script>
+        document.querySelectorAll("image").forEach(img => {
+            let a = document.createElement("a")
+            a.setAttribute("href", "https://dionisio-fernandez.github.io/main/" + img.src)
+            img.appendChild(a)
+        })
+    </script>
 </html>
