@@ -2,67 +2,14 @@
   <link rel="stylesheet" href="style.css">
   <div id="main">
     
-    <button onclick="addEquation()" id="btn1">+</button>
-    <button onclick="alpha()" id="btn3">🖩</button>
-    <button onclick="removeEquation()" id="btn2">-</button>
-    
+    <button id="btn1">+</button>
+    <button id="btn3">🖩</button>
+    <button id="btn2">-</button>
     <ul class="list">
     </ul>
   </div>
 
 
-  <script defer src="https://unpkg.com/mathlive/dist/mathlive.min.js"></script>
-  <script src="https://unpkg.com/mathjs@9.5.0/lib/browser/math.js"></script>
-  <script>  
-    let _$ = (...x) => document.querySelector(...x);
-    function addEquation() {
-      let li = document.createElement("li")
-      let inp = document.createElement("math-field")
-      li.appendChild(inp)
-      li.classList.add("eq")
-      inp.classList.add("inp")
-      _$(".list").appendChild(li)
-    }
-    function removeEquation() {
-      let li = _$(".list")
-      let ch = li.children
-      li.classList.add("eq")
-      ch[ch.length-1].remove()
-    }
-    function beta(a, b) {
-      return a.replaceAll(/[^a-z]/g, "") > b.replaceAll(/[^a-z]/g, "") // [1b, -3a] -> [-3a, 1b]
-    }
-    function alpha() {
-      let eqlst = []
-      _$(".list").children.forEach(x => eqlst.push(x.children[0].value))
-      
-      let amatrix = eqlst.map(x => x.split("=")[0])
-      amatrix = amatrix.map(x => x.replaceAll(/\\frac\{(.*?)\}\{(.*?)\}/g, "$1/$2"))
-      let bmatrix = eqlst.map(x => parseFloat(x.split("=")[1]))
-      let unkSym = new Set()
-      amatrix = amatrix.map(s => {
-        return s.replaceAll(/-/g, "+-").split("+").sort(beta).join("+")
-      })
-      
-      amatrix = amatrix.map(s => s.split("+").filter(y => y).map(y => {
-        let sym = y.match(/[a-z]+/g)[0]
-        let scope = {unk: 1}
-        unkSym.add(sym)
-        y=y.replaceAll(sym, "unk")
-        
-        
-        return math.evaluate(y, scope)
-      }))
-      let solved 
-      try {solved = math.lusolve(amatrix,bmatrix).flat()} catch(error) {}
-      unkSym = Array(...unkSym).sort() // {b, a} -> [b, a] -> [a, b]. Set -> unsorted Array -> sorted array
-      solved = solved.map((x, i) => `${unkSym[i]} = ${x}\n`)
-      alert(solved.join(""))
-    }
-    
-    addEquation()
-    removeEquation()
-    addEquation()
-    addEquation()
-  </script>
+  
+  <script src="main.js"></script>
 </html>
