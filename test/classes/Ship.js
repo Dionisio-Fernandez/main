@@ -1,5 +1,5 @@
-import Shot from "./Shot";
-import images from "./global";
+import Shot from "./Shot.js";
+import images from "./global.js";
 export default class Ship {
     constructor(imgArr, x, y, scale, w, h, vx, vy) {
         this.imgArr = imgArr;
