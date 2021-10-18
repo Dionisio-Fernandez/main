@@ -1,4 +1,4 @@
-import ImageSrc from "./ImageSrc";
+import ImageSrc from "./ImageSrc.js";
 export default {
     shipArr: [
         new ImageSrc("../images/ship0.png"),
